@@ -9,7 +9,7 @@ typedef long double lld;
 bool comp( pair<int,int> p1, pair<int,int> p2){
     return (p1.second < p2.second);
 }
-void solve(int k){
+void solve(){
     int n; cin>>n;
     vector<pair<int,int>> v;
     for(ll i=0;i<n;i++){
@@ -32,8 +32,7 @@ int main() {
     fast;
     int t=1;
     // cin>>t;
-    int k=1;
     while(t--){
-        solve(k);
+        solve();
     }
 }
