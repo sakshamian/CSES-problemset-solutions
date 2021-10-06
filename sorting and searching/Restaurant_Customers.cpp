@@ -1,117 +1,44 @@
-/*
-*
-*************************************************************
-* AUTHOR : Ashish Gururani                                  *
-* Language: C++14                                           *
-* Purpose: -                                                *
-* IDE used: Visual Studio Code.                             *
-*************************************************************
-*
-Comments will be included in practice problems if it helps ^^
-*/
-#include <bits/stdc++.h>
-typedef long             long ll;
-typedef long             double ld;
-#define rep(i,n,k)       for(ll i=0;i<n;i+=k)
-#define rrep(i,n,k)      for(ll i=n;i>=0;i-=k)
-#define rep1(i,n,k)      for(ll i=1;i<n;i+=k)
-#define vi               vector<int>
-#define vl               vector<ll>
-#define vs               vector<string>
-#define vvi              vector<vi>
-#define vvl              vector<vl>
-#define vvs              vector<vs>
-#define mem(a,b)         memset(a,b,sizeof(a))
-#define fast             ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-#define pb               emplace_back
-#define mp               make_pair
-#define fi               first
-#define se               second
-#define nline          "\n"
-#define tc(t)            long long t;cin>>t;while(t--)
-#define all(x)           (x).begin(), (x).end()
- 
-#ifndef ONLINE_JUDGE
-#define dbg(x)           cerr<<#x<<" = "<<x<<endl
-#else
-#define dbg(x)
-#endif
-#define inf                 1e6+5
-#define mod              ll(1e9+7)
+#include<bits/stdc++.h>
 using namespace std;
-
-template <typename T>
-void print_array(const T &arr, char c = ' ')
-{
-    for (auto x : arr)
-    {
-        cout << x << c;
+typedef long long ll;
+void testcase(){
+    int n; cin>>n;
+    vector<int> a,b;
+    for(int i=0;i<n;i++){
+        int x,y; cin>>x>>y;
+        a.push_back(x);
+        b.push_back(y);
     }
-    cout << endl;
-}
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
+    int i=0,j=0,curr=0,ans=0;
 
-template <typename T>
-void input_array(vector<T> &arr)
-{
-    for (ll i = 0; i < arr.size(); i++)
+    while (i<n)
     {
-        cin >> arr[i];
+        if(a[i]<b[j]){
+            curr++;
+            i++;
+        }
+        else{
+            curr--;
+            j++;
+        }
+        ans = max(ans,curr);
     }
+    cout<<ans<<endl;
 }
-
-template <typename T>
-void dbg_vector(const T &arr, char c = ' ')
-{
-    cerr << "[";
-    for (auto x : arr)
-    {
-        cerr << x << ' ';
-    }
-    cerr << "[" << endl;
-}
-
-vvl adj;
-vl vis;
 int main()
 {
-#ifndef ONLINE_JUDGE
-    freopen("input.txt", "r", stdin);
-    freopen("error.txt", "w", stderr);
-    freopen("output.txt", "w", stdout);
-#endif
-    fast;
-    ll a, b, c, d, e, f, m, n, p, q;
-    string s, r;
-
-    //tc(t)
+    ios_base::sync_with_stdio(false); 
+    cin.tie(NULL); 
+    cout.tie(NULL);
+    int test=1; 
+    // cin>>test;
+    while(test--)
     {
-      
-        cin >> n;
-        vl A(n), B(n);
-        for (ll i = 0; i < n; i++)
-        {
-            cin >> A[i];
-            cin >> B[i];
-        }
-        sort(all(A));
-        sort(all(B));
-        ll ans = 0, tem = 0;
-        ll i = 0, j = 0;
-        while (i < n)
-        {
-            if (A[i] <= B[j])
-            {
-                tem++;
-                i++;
-            }
-            else
-            {
-                j++;
-                tem--;
-            }
-            ans = max(ans, tem);
-        }
-        cout << ans << endl;
+     testcase();
     }
+
+    cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl;
     return 0;
 }
